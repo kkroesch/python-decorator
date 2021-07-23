@@ -1,3 +1,7 @@
+""" Caching decorators.
+    Usage examples, see https://realpython.com/lru-cache-python/
+"""
+
 from functools import lru_cache, wraps
 from datetime import datetime, timedelta
 
@@ -18,3 +22,4 @@ def timed_lru_cache(seconds: int, maxsize: int = 128):
         return wrapped_func
 
     return wrapper_cache
+

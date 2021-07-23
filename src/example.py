@@ -4,6 +4,7 @@ from tracer import slow_down, debug
 import sys, logging
 from unittest import TestCase
 from tracer import trace, timer, log
+from cache import timed_lru_cache
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -28,3 +29,10 @@ def did_something_with_meaningful_name():
     pass
 
 did_something_with_meaningful_name()
+
+
+@timed_lru_cache(10)
+def get_article_from_server(url):
+    response = requests.get(url)
+    return response.text
+
